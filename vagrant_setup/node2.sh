@@ -29,7 +29,12 @@ echo '{
         "tags": [
             "web"
         ],
-        "port": 6379
+        "port": 6379,
+        "check": {
+            "tcp": "10.10.10.11:6379",
+            "interval": "10s",
+            "timeout": "3s"
+        }
     }
 }' > /home/vagrant/consul/node2/redis.json
 
@@ -38,4 +43,5 @@ docker rm -f apache
 docker rm -f consul
 
 docker run -d --name="apache" -p 80:80 php:5.6-apache
+docker run -d --name="redis" -p 6379:6379 redis:3.2.4-alpine
 docker run -d --name="consul" -h node2 --net="host" -v /home/vagrant/consul/node2:/consul/config consul agent
