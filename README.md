@@ -17,7 +17,7 @@ Interface will be hosted at http://10.10.10.10:8500/ui
 
 
 
-### Testing Failove
+### Testing Failover
 SSH into one of the nodes with a running service
 ```
 vagrant ssh node3
